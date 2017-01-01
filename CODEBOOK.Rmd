@@ -1,0 +1,74 @@
+---
+title: "CODEBOOK"
+author: "Tanakorn Dhamalongkrot"
+date: "December 28, 2016"
+output: html_document
+---
+
+##This is a code book
+
+###The result from **run_analysis.R** is intended to answer five questions below
+***
+You should create one R script called run_analysis.R that does the following.  
+1.Merges the training and the test sets to create one data set.  
+2.Extracts only the measurements on the mean and standard deviation for each measurement.  
+3.Uses descriptive activity names to name the activities in the data set  
+4.Appropriately labels the data set with descriptive variable names.  
+5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.  
+
+#### As a result **run_analysis.R** will create the following result
+
+Name             |   Type   |         Description  
+-----------------|----------|-------------------------
+allbind5         |data.table| Result from first four question  
+allbind5tidy     |data.table| Result from fifth question  
+allbind5.csv     | csv file | Conversion of allbind5  
+allbind5tidy.csv | csv file | Conversion of allbind5tidy  
+allbind5tidy.txt | txt file | Conversion of allbind5tidy  
+
+###For **allbind5**  variable detail are listed as follows
+**- vfeaturenumber**  
+The mean and sd measurement for each of factor for using in this analysis. Displayed as variable code.  
+**- subject**  
+group of 30 volunteers within an age bracket of 19-48 years  
+**- activitynumber**  
+list of six activities (1=WALKING, 2=WALKING_UPSTAIRS, 3=WALKING_DOWNSTAIRS, 4=SITTING, 5=STANDING, 6=LAYING)  
+**- activityname & activity**  
+Activity name; WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, and LAYING  
+**- value**  
+Single value of each sample. The value is corespond to featurename.  
+**- featurenumber**  
+Same as vfeaturenumber. Except that there is no v as a code for mapping  
+**- featurename**  
+detailed featurename.  
+**- Domain**  
+Time and frequency notation  
+**- Instrument**  
+Type of sensor signal  
+**- Variable**  
+Classify between mean and sd  
+**- Jerk**  
+jerk signal and magnitude of three dimensional signal  
+**- Magnitude**  
+Magnitude of three dimensional signal  
+**- Axis**  
+Classify -x, -y, -z, the 3-axial signals  
+**- Count**  
+Number count of each variable in calculating average  
+**- Average**  
+Average value based on each variable.  
+
+## Information from **allbind5** data.table
+```{r}
+library("memisc")
+codebook(allbind5)
+str(allbind5)
+summary(allbind5)
+```
+
+## Information from **allbind5tidy** data.table
+```{r}
+codebook(allbind5tidy)
+str(allbind5tidy)
+summary(allbind5tidy)
+```
