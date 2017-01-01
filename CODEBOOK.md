@@ -93,26 +93,85 @@ Number count of each variable in calculating average
 **- Average**  
 Average value based on each variable.
 
+Step is listed as follows
+
+1.Merges the training and the test sets to create one data set.
+---------------------------------------------------------------
+
+First download the file and set command to execute winrar on the zip
+file
+
+Then read file subject, activity, X variables and combine the table
+
+2.Extracts only the measurements on the mean and standard deviation for each measurement.
+-----------------------------------------------------------------------------------------
+
+Classify feature that contain only mean() and std(). Set it as feature2
+
+Select column to be used; subject, activity number, and "selected"
+feature Then Read activity label and add activity label to allbind3
+through the use of merge function That is; allbind3 will be "selected"
+feature plus suject, activity number, and ,activity label
+
+Then, reshape data by taking x variable and spread out in vfeaturenumber
+column. Leave the rest of data; subject, activitynumber, and
+activityname the same
+
+3.Uses descriptive activity names to name the activities in the data set
+------------------------------------------------------------------------
+
+Add featurename and featurenumber to allbind4 and add activity and
+feature column
+
+4.Appropriately labels the data set with descriptive variable names
+-------------------------------------------------------------------
+
+Classify whether it is time variable or frequency variable  
+Time variable will be displayed for value of 1 while Freq will be
+displayed for value of 2  
+Classify between Type of sensor signal  
+Classify component of sensor acceleration signal, which are
+gravitational and body motion components  
+Note that, if the information factor has NA, label will be start at NA  
+Classify between mean and sd  
+From unique(allbind5$feature), there is jerk signal and magnitude of
+three dimensional signal  
+Classify -x, -y, -z, the 3-axial signals  
+Finally, Make sure that all feature are counted. Note that there are 66
+unique feature in this dataset.
+
+5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create a data set with the average of each variable for each activity
+and each subject.  
+Cal average separated by 30 subjects,6 Activity, and different 666
+factors
+allbind5tidy&lt;-allbind5\[,list(count=.N,average=mean(value)),by
+=key(allbind5)\]
+
+Create tidy file
+----------------
+
+write.csv(allbind5,file="allbind5.csv")
+write.csv(allbind5tidy,file="allbind5tidy.csv")
+write.table(allbind5tidy,file="allbind5tidy.txt",row.names=FALSE)
+
+Make codebook.
+--------------
+
+library(rmarkdown) render("CODEBOOK.Rmd",output\_format="md\_document")
+render("CODEBOOK.Rmd")
+
+Make markdown
+-------------
+
+render("README.Rmd",output\_format="md\_document") render("README.Rmd")
+
 Information from **allbind5** data.table
 ----------------------------------------
 
     library("memisc")
-
-    ## Loading required package: lattice
-
-    ## Loading required package: MASS
-
-    ## 
-    ## Attaching package: 'memisc'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     contr.sum, contr.treatment, contrasts
-
-    ## The following object is masked from 'package:base':
-    ## 
-    ##     as.array
-
     codebook(allbind5)
 
     ## ===========================================================================

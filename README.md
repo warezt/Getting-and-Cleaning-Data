@@ -15,3 +15,4 @@ Connection between files will utilize library "rmarkdown". Notably, in
 creating CODEBOOK, the run\_analysis will require library "seismic" too.
 
 The result file would be allbind5tidy.txt.
+------------------------------------------

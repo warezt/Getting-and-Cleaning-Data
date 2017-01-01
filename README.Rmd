@@ -17,4 +17,4 @@ This is the file that run_analysis will use to create README.md and README.html 
 
 Connection between files will utilize library "rmarkdown". Notably, in creating CODEBOOK, the run_analysis will require library "seismic" too.
 
-The result file would be allbind5tidy.txt.
+##The result file would be allbind5tidy.txt.

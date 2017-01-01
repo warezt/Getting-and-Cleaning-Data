@@ -207,7 +207,52 @@ Classify -x, -y, -z, the 3-axial signals<br />
 Number count of each variable in calculating average<br />
 <strong>- Average</strong><br />
 Average value based on each variable.</p>
+<p>Step is listed as follows</p>
 </div>
+</div>
+<div id="merges-the-training-and-the-test-sets-to-create-one-data-set." class="section level2">
+<h2>1.Merges the training and the test sets to create one data set.</h2>
+<p>First download the file and set command to execute winrar on the zip file</p>
+<p>Then read file subject, activity, X variables and combine the table</p>
+</div>
+<div id="extracts-only-the-measurements-on-the-mean-and-standard-deviation-for-each-measurement." class="section level2">
+<h2>2.Extracts only the measurements on the mean and standard deviation for each measurement.</h2>
+<p>Classify feature that contain only mean() and std(). Set it as feature2</p>
+<p>Select column to be used; subject, activity number, and “selected” feature Then Read activity label and add activity label to allbind3 through the use of merge function That is; allbind3 will be “selected” feature plus suject, activity number, and ,activity label</p>
+<p>Then, reshape data by taking x variable and spread out in vfeaturenumber column. Leave the rest of data; subject, activitynumber, and activityname the same</p>
+</div>
+<div id="uses-descriptive-activity-names-to-name-the-activities-in-the-data-set" class="section level2">
+<h2>3.Uses descriptive activity names to name the activities in the data set</h2>
+<p>Add featurename and featurenumber to allbind4 and add activity and feature column</p>
+</div>
+<div id="appropriately-labels-the-data-set-with-descriptive-variable-names" class="section level2">
+<h2>4.Appropriately labels the data set with descriptive variable names</h2>
+<p>Classify whether it is time variable or frequency variable<br />
+Time variable will be displayed for value of 1 while Freq will be displayed for value of 2<br />
+Classify between Type of sensor signal<br />
+Classify component of sensor acceleration signal, which are gravitational and body motion components<br />
+Note that, if the information factor has NA, label will be start at NA<br />
+Classify between mean and sd<br />
+From unique(allbind5$feature), there is jerk signal and magnitude of three dimensional signal<br />
+Classify -x, -y, -z, the 3-axial signals<br />
+Finally, Make sure that all feature are counted. Note that there are 66 unique feature in this dataset.</p>
+</div>
+<div id="from-the-data-set-in-step-4-creates-a-second-independent-tidy-data-set-with-the-average-of-each-variable-for-each-activity-and-each-subject." class="section level2">
+<h2>5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.</h2>
+<p>Create a data set with the average of each variable for each activity and each subject.<br />
+Cal average separated by 30 subjects,6 Activity, and different 666 factors allbind5tidy&lt;-allbind5[,list(count=.N,average=mean(value)),by =key(allbind5)]</p>
+</div>
+<div id="create-tidy-file" class="section level2">
+<h2>Create tidy file</h2>
+<p>write.csv(allbind5,file=“allbind5.csv”) write.csv(allbind5tidy,file=“allbind5tidy.csv”) write.table(allbind5tidy,file=“allbind5tidy.txt”,row.names=FALSE)</p>
+</div>
+<div id="make-codebook." class="section level2">
+<h2>Make codebook.</h2>
+<p>library(rmarkdown) render(“CODEBOOK.Rmd”,output_format=“md_document”) render(“CODEBOOK.Rmd”)</p>
+</div>
+<div id="make-markdown" class="section level2">
+<h2>Make markdown</h2>
+<p>render(“README.Rmd”,output_format=“md_document”) render(“README.Rmd”)</p>
 </div>
 <div id="information-from-allbind5-data.table" class="section level2">
 <h2>Information from <strong>allbind5</strong> data.table</h2>
